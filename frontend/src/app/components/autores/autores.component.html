@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h3>Ingresar Autor </h3>
+        <form #autorForm = "ngForm" (ngSubmit)="addAutor(autorForm)">
+
+        <input type="hidden" name="_id" [(ngModel)]="autorservice.selecteAutor._id">
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="nombre"
+              placeholder="porfavor ingrese el nombre del autor"
+              [(ngModel)]="autorservice.selecteAutor.nombre"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="date"
+              class="form-control"
+              name="nacimiento"
+              placeholder="porfavor ingrese la fecha de nacimiento del autor"
+              [(ngModel)]="autorservice.selecteAutor.nacimiento"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="Ciudad"
+              placeholder="porfavor ingrese la ciudad de origen del autor"
+              [(ngModel)]="autorservice.selecteAutor.Ciudad"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="correo"
+              placeholder="porfavor ingrese el correo del autor"
+              [(ngModel)]="autorservice.selecteAutor.correo"
+              >
+          </div>
+
+          <button class="btn btn-secondary">
+            Agregar
+          </button>
+
+          <button class="btn btn-secondary" (click)="resetForm(autorForm)">
+            Limpiar
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>nombre</th>
+          <th>nacimiento</th>
+          <th>Ciudad</th>
+          <th>correo</th>       
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autor of autorservice.autores">
+          <td>{{Autor.nombre}}</td>
+          <td>{{Autor.nacimiento}}</td>
+          <td>{{Autor.Ciudad}}</td>
+          <td>{{Autor.correo}}</td>          
+          <td>
+            <button class="btn btn-primary btn-sm mr-auto" (click)="editAutor(Autor)"><i class="material-icons">edit</i></button>
+            <button class="btn btn-danger btn-sm mr-auto" (click)="deletAutor(Autor._id!)"><i class="material-icons">delete</i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

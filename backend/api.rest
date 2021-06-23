@@ -1,0 +1,34 @@
+###
+
+GET http://localhost:4000/api/libros
+
+###
+
+POST http://localhost:4000/api/libros
+Content-Type: application/json
+
+{
+    "titulo": "100 años de soledad",
+    "año": "1965",    
+    "genero":"drama",
+    "paginas":"170",
+    "editorial":"Planeta",
+    "autor": "Gabriel Garcia Marquez"    
+}
+###
+
+GET http://localhost:4000/api/libros/60d27481bb96e40d08a5374d
+
+###
+
+DELETE  http://localhost:4000/api/libros/60d27481bb96e40d08a5374d
+
+
+###
+
+PUT http://localhost:4000/api/libros/60d27481bb96e40d08a5374d
+Content-Type: application/json
+
+{
+    "año": 1960
+}

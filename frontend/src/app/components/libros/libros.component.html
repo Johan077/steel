@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h3>Ingresar libro </h3>
+        <form #libroForm = "ngForm" (ngSubmit)="addlibro(libroForm)">
+
+        <input type="hidden" name="_id" [(ngModel)]="libroservices.selecteLibro._id">
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="titulo"
+              placeholder="porfavor ingrese el titulo del libro"
+              [(ngModel)]="libroservices.selecteLibro.titulo"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="number"
+              class="form-control"
+              name="year"
+              placeholder="porfavor ingrese el año del libro"
+              [(ngModel)]="libroservices.selecteLibro.year"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="genero"
+              placeholder="porfavor ingrese el genero del libro"
+              [(ngModel)]="libroservices.selecteLibro.genero"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="number"
+              class="form-control"
+              name="paginas"
+              placeholder="porfavor ingrese el numero de paginas del libro"
+              [(ngModel)]="libroservices.selecteLibro.paginas"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="editorial"
+              placeholder="porfavor ingrese la editorial titulo del libro"
+              [(ngModel)]="libroservices.selecteLibro.editorial"
+              >
+          </div>
+
+          <div class="form-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              name="autor"
+              placeholder="porfavor ingrese el autor del libro"
+              [(ngModel)]="libroservices.selecteLibro.autor"
+              >
+          </div>
+
+          <button class="btn btn-secondary">
+            Agregar
+          </button>
+
+          <button class="btn btn-secondary" (click)="resetForm(libroForm)">
+            Limpiar
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Año</th>
+          <th>Genero</th>
+          <th>Numero de paginas</th>
+          <th>Editorial</th>
+          <th>Autor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of libroservices.libros">
+          <td>{{libro.titulo}}</td>
+          <td>{{libro.year}}</td>
+          <td>{{libro.genero}}</td>
+          <td>{{libro.paginas}}</td>
+          <td>{{libro.editorial}}</td>
+          <td>{{libro.autor}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm mr-auto" (click)="editLibro(libro)"><i class="material-icons">edit</i></button>
+            <button class="btn btn-danger btn-sm mr-auto" (click)="deletLibro(libro._id!)"><i class="material-icons">delete</i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

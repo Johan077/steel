@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h3>Ingresar Editorial </h3>
+        <form #editorialForm="ngForm" (ngSubmit)="addliEditorial(editorialForm)">
+
+          <input type="hidden" name="_id" [(ngModel)]="editorialservices.selecteEditorial._id">
+
+          <div class="form-group p-4">
+            <input type="text" class="form-control" name="nombre"
+              placeholder="porfavor ingrese el nombre de la editorial"
+              [(ngModel)]="editorialservices.selecteEditorial.nombre">
+          </div>
+
+          <div class="form-group p-4">
+            <input type="text" class="form-control" name="correspndencia"
+              placeholder="porfavor ingrese la correspndencia de la editorial"
+              [(ngModel)]="editorialservices.selecteEditorial.correspndencia">
+          </div>
+
+          <div class="form-group p-4">
+            <input type="number" class="form-control" name="telefono"
+              placeholder="porfavor ingrese el telefono de la editorial"
+              [(ngModel)]="editorialservices.selecteEditorial.telefono">
+          </div>
+
+          <div class="form-group p-4">
+            <input type="text" class="form-control" name="correo"
+              placeholder="porfavor ingrese el correo de la editorial"
+              [(ngModel)]="editorialservices.selecteEditorial.correo">
+          </div>
+
+          <div class="form-group p-4">
+            <input type="number" class="form-control" name="Libros"
+              placeholder="porfavor ingrese el numero de Libros titulo de la editorial"
+              [(ngModel)]="editorialservices.selecteEditorial.Libros">
+          </div>
+
+          <button class="btn btn-secondary">
+            Agregar
+          </button>
+
+          <button class="btn btn-secondary" (click)="resetForm(editorialForm)">
+            Limpiar
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correspndencia</th>
+          <th>Telefono</th>
+          <th>correo</th>
+          <th>Numero de Libros</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Editorial of editorialservices.editoriales">
+          <td>{{Editorial.nombre}}</td>
+          <td>{{Editorial.correspndencia}}</td>
+          <td>{{Editorial.telefono}}</td>
+          <td>{{Editorial.correo}}</td>
+          <td>{{Editorial.Libros}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm mr-auto" (click)="editEditorial(Editorial)"><i
+                class="material-icons">edit</i></button>
+            <button class="btn btn-danger btn-sm mr-auto" (click)="deletEditorial(Editorial._id!)"><i
+                class="material-icons">delete</i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
